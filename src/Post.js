@@ -1,21 +1,24 @@
-export default function Post() {
+import { format } from "date-fns";
+export default function Post({
+  title,
+  summary,
+  cover,
+  content,
+  createdAt,
+  author,
+}) {
   return (
     <div className="post">
       <div className="image">
-        <img src="https://i.kinja-img.com/gawker-media/image/upload/c_fit,f_auto,g_center,pg_1,q_60,w_965/646b91cfec3270cc1f6f8982140bdeb3.jpg" />
+        <img src={"http://localhost:4000/" + cover} alt="" />
       </div>
       <div className="text">
-        <h2>Elden Ring Sells 20 Million Copies, Makes Excellent Point</h2>
+        <h2>{title}</h2>
         <p className="info">
-          <a className="author">Yohan hettiarachchi</a>
-          <time>2023-02-23 11:48</time>
+          <a className="author">{author.username}</a>
+          <time>{format(new Date(createdAt), "MMM d, yyy HH:mm")}</time>
         </p>
-        <p className="summary">
-          It was announced earlier today that Elden Ring, FromSoftware’s 2022
-          Game Of The Year For Loads Of People (including most staff at this
-          website), has sold 20 million copies worldwide since its release a
-          year ago.
-        </p>
+        <p className="summary"> {summary} </p>
       </div>
     </div>
   );
